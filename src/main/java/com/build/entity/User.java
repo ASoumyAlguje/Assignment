@@ -20,4 +20,7 @@ public class User {
     private  String password;
     private String email;
 
+//    @ManyToOne
+//    @JoinColumn(name = "adminId")
+//    private Admin admin;
 }
