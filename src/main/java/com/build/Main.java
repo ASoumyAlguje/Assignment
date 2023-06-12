@@ -11,4 +11,9 @@ public class Main {
         SpringApplication.run(Main.class, args);
         System.out.println("UP and RUNNING!!!");
     }
+    @Bean
+    public ModelMapper  modelMapper()
+    {
+        return new ModelMapper();
+    }
 }

@@ -20,7 +20,7 @@ public class UserDto {
     private String name;
 
     @NotEmpty
-    @Size(min = 4, max = 8, message = "Passowrd must be min 4 and max 8 length!!!")
+    @Size(min = 4, max = 8, message = "Password must be min 4 and max 8 length!!!")
     private String password;
 
     @Email(message = "Email address is not valid!!!")
