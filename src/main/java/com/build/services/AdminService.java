@@ -16,6 +16,8 @@ public interface AdminService {
     //delete
     void deleteAdmin(Integer adminId);
 
+    List<AdminDto> getAdmin();
+
     //getAll
 //    List<AdminDto> getAllAdmin();
 //

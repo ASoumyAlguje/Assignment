@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -24,6 +25,12 @@ public class AdminController {
         AdminDto adminDto1 = this.adminService.createAdmin(adminDto);
 
         return new ResponseEntity<>(adminDto1, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<List<AdminDto>> getAll(@RequestBody AdminDto adminDto)
+    {
+        return ResponseEntity.ok(this.adminService.getAdmin());
     }
 
     @PutMapping("/{adminId}")

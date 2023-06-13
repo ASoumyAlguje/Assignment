@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class AdminServiceImpl implements AdminService {
 
@@ -47,13 +49,12 @@ public class AdminServiceImpl implements AdminService {
         this.adminRepo.delete(adm);
     }
 
-//    @Override
-//    public List<AdminDto> getAllAdmin() {
-//        return null;
-//    }
-//
-//    @Override
-//    public AdminDto getAdminById(Integer userId) {
-//        return null;
-//    }
+    @Override
+    public List<AdminDto> getAdmin() {
+        List<Admin> adms = this.adminRepo.findAll();
+
+        List<AdminDto> admdtos = adms.stream().map((Admin)-> this.modelMapper.map(adms, AdminDto.class)).collect(Collectors.toList());
+
+        return admdtos;
+    }
 }
