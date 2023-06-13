@@ -12,6 +12,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -22,6 +23,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebSecurity
@@ -41,11 +43,11 @@ public class SecurityConfig {
 
         httpSecurity
                 .csrf(csrf-> csrf.disable())
-                .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/api/v1/auth/login")
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/v1/auth/login")
                         .permitAll()
-                .anyRequest()
-                .authenticated())
+                        .anyRequest()
+                        .authenticated())
                 .sessionManagement(sess-> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
                 //.oauth2ResourceServer(OAuth2ResourceServerConfigurer:)
 
