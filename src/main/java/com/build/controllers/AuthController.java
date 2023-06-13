@@ -42,13 +42,10 @@ public class AuthController {
         return new ResponseEntity<JwtAuthRespone>(response, HttpStatus.OK);
     }
 
-    private void authenticate(String username, String password) throws Exception {
+    private void authenticate(String username, String password) {
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password);
-        try {
+
             this.authenticationManager.authenticate(authenticationToken);
-        }catch (DisabledException e)
-        {
-            throw new Exception("user is disabled");
-        }
+
     }
 }

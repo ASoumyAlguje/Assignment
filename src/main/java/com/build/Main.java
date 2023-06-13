@@ -7,10 +7,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.SpringServletContainerInitializer;
 
 @SpringBootApplication
-//
-public class Main implements CommandLineRunner{
+public class Main extends SpringServletContainerInitializer implements CommandLineRunner{
 
     @Autowired
     private PasswordEncoder passwordEncoder;
