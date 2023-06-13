@@ -46,11 +46,9 @@ public class SecurityConfig {
                         .permitAll()
                 .anyRequest()
                 .authenticated())
-                //.exceptionHandling().authenticationEntryPoint(this.jwtAuthenticationEntryPoint)
-                .sessionManagement(sess-> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(sess-> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
                 //.oauth2ResourceServer(OAuth2ResourceServerConfigurer:)
-                .httpBasic(Customizer.withDefaults())
-                .build();
+
                 httpSecurity.addFilterBefore(this.jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
 
